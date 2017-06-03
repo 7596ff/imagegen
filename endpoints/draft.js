@@ -91,7 +91,7 @@ function handle(req, res) {
     };
 
     for (key of Object.keys(data)) {
-        data[key] = Object.assign(data[key], req.query[key].split(","));
+        data[key] = Object.assign(data[key], req.query[key] && req.query[key].split(","));
     }
 
     draw(data).then((image) => {
