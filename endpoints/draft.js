@@ -1,3 +1,4 @@
+const config = require("../config.json");
 const fs = require("fs");   
 const Jimp = require("jimp")
 const dc = require("dotaconstants");
@@ -83,6 +84,8 @@ async function draw(data) {
 }
 
 function handle(req, res) {
+    if (!config.keys.includes(req.query.key)) return res.status(401).send("Unauthorized");
+
     let data = {
         radiant_bans: Array(5).fill("0"),
         dire_bans: Array(5).fill("0"),
