@@ -45,6 +45,7 @@ function handle(req, res) {
 
     let icon = parseInt(req.query.rank.toString()[0]);
     let star = parseInt(req.query.rank.toString()[1]);
+    if (isNaN(star)) star = 0;
     
     draw(icon, star).then((image) => {
         let mime = image.getMIME();
