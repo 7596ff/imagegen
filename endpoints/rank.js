@@ -11,7 +11,10 @@ const files = {
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_4.png`),
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_5.png`),
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_6.png`),
-        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7.png`)
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7a.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7b.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7c.png`)
     ],
     stars: [
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_1.png`),
@@ -39,13 +42,19 @@ async function draw(icon, star) {
 function handle(req, res) {
     if (!config.keys.includes(req.query.key)) return res.status(401).send("Unauthorized");
 
-    if (!req.query.rank) return res.status(400).send("Bad Request");
+    if (!req.query.badge) return res.status(400).send("Bad Request");
 
-    if (req.query.rank == 76) req.query.rank = 75;
-
-    let icon = parseInt(req.query.rank.toString()[0]);
-    let star = parseInt(req.query.rank.toString()[1]);
+    let icon = parseInt(req.query.badge.toString()[0]);
+    let star = parseInt(req.query.badge.toString()[1]);
     if (isNaN(star)) star = 0;
+
+    if (req.query.badge == 76) {
+        icon = 8;
+        star = 0;
+    }
+    
+    if (req.query.rank <= 100) icon = 9;
+    if (req.query.rank <= 10) icon = 10;
     
     draw(icon, star).then((image) => {
         let mime = image.getMIME();
