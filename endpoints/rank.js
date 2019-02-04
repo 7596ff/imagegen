@@ -12,9 +12,9 @@ const files = {
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_5.png`),
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_6.png`),
         fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7.png`),
-        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7a.png`),
-        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7b.png`),
-        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_7c.png`)
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_8.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_8b.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/icon/rank_icon_8c.png`)
     ],
     stars: [
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_1.png`),
@@ -50,11 +50,6 @@ function handle(req, res) {
     let star = parseInt(req.query.badge.toString()[1]);
     if (isNaN(star)) star = 0;
 
-    if (req.query.badge == 76) {
-        icon = 8;
-        star = 0;
-    }
-    
     if (req.query.rank <= 100) icon = 9;
     if (req.query.rank <= 10) icon = 10;
     
