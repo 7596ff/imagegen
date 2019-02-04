@@ -21,8 +21,8 @@ const files = {
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_2.png`),
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_3.png`),
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_4.png`),
-        fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_5.png`)
-        fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_6.png`)
+        fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_5.png`),
+        fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_6.png`),
         fs.readFileSync(`${__dirname}/../static/badges/stars/rank_star_7.png`)
     ]
 };
